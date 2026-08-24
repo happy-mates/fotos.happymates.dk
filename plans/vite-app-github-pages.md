@@ -17,4 +17,4 @@
 - [x] Opret happy-mates/fotos.happymates.dk med gh (public)
 - [x] Aktivér GitHub Pages (build_type=workflow) + custom domain fotos.happymates.dk via gh api
 - [x] Push og verificér at workflow kører grønt (Deploy to GitHub Pages: success)
-- [ ] DNS: fotos.happymates.dk skal have CNAME-record → happy-mates.github.io (manuelt hos DNS-udbyder)
+- [x] DNS: fotos.happymates.dk skal have CNAME-record → happy-mates.github.io (verificeret: domænet svarer HTTP 200)
