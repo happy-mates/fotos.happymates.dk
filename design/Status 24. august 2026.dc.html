@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/colors_and_type.css">
+<script src="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { color: #1e58d3; text-decoration: underline; }
+</style>
+</helmet>
+<div style="max-width: 880px; margin: 0 auto; padding: 0 24px 96px 24px;">
+
+  <header style="display: flex; align-items: center; gap: 12px; padding: 28px 0; border-bottom: 1px solid #e2e8f0;">
+    <img src="assets/happy-mates-logo.svg" alt="Happy Mates" style="width: 40px; height: 40px;">
+    <span class="hm-wordmark" style="font-size: 18px;">HAPPY MATES</span>
+    <span style="margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">Internt · Lene &amp; Niels</span>
+  </header>
+
+  <section style="padding: 56px 0 40px 0;">
+    <div class="hm-eyebrow" style="margin-bottom: 16px;">Status · 24. august 2026</div>
+    <h1 style="font-weight: 700; font-size: 44px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px 0; text-wrap: balance;">Mikkel bliver i Helsingør — vejen til egen indtægt</h1>
+    <p style="font-size: 19px; line-height: 1.6; color: #64748b; margin: 0; max-width: 640px; text-wrap: pretty;">Det er nu afklaret, at Mikkel bliver boende i sin lejlighed i Helsingør. Næste mål: at han kan stå på egen indtægt gennem fakturering til foreningen — uafhængig af kontanthjælp. Her er regnestykket.</p>
+  </section>
+
+  <section style="background: #f1f5f9; border-radius: 16px; padding: 28px 32px;">
+    <div class="hm-eyebrow" style="margin-bottom: 10px;">Nyt siden 20. juli</div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.6; color: #0f172a;">
+      <div>— Mikkel bliver i sin lejlighed i Helsingør — Aarhus-flytningen er ikke længere planen.</div>
+      <div>— Vi afsøger nu, hvordan Mikkel kan blive helt uafhængig af kontanthjælp via egen fakturering.</div>
+      <div>— Modellen: Mikkel fakturerer selv sine kunder — og i det omfang kundeomsætningen ikke rækker, fakturerer han foreningen det resterende op til målet.</div>
+      <div>— Målet: <strong>ca. 12.000 kr. netto om måneden efter skat</strong>.</div>
+      <div>— Forrige status: <a href="Status 20. juli 2026.dc.html">20. juli 2026</a>.</div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Regnestykket — hvad skal der faktureres?</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Fra faktura til netto, trin for trin. Overslag — skal bekræftes med Skat/revisor.</p>
+    <div style="border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
+      <sc-for list="{{ calcRows }}" as="r" hint-placeholder-count="6">
+        <div style="display: grid; grid-template-columns: 1fr 170px; gap: 16px; padding: 16px 24px; border-top: 1px solid #e2e8f0; align-items: baseline; background: {{ r.bg }};">
+          <div>
+            <div style="font-weight: {{ r.weight }}; font-size: 15px; color: {{ r.fg }};">{{ r.name }}</div>
+            <div style="font-size: 13px; color: #94a3b8; margin-top: 2px;">{{ r.note }}</div>
+          </div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: {{ r.weight }}; font-size: 16px; color: {{ r.fg }};">{{ r.amount }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background: #ffffff; border: 1px solid rgba(20,184,166,0.4); border-radius: 16px; padding: 24px; margin-top: 16px;">
+      <div class="hm-eyebrow" style="margin-bottom: 10px; color: #0d9488;">Modellen — kunder først, foreningen topper op</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.6; color: #0f172a;">
+        <div>— Mikkel fakturerer selv sine kunder for det arbejde, han laver for dem.</div>
+        <div>— Ved månedens udgang gøres kundeomsætningen op — fakturerer han fx 5.000 kr. til kunder, fakturerer han foreningen de resterende 13.000 kr.</div>
+        <div>— Foreningen er altså garant for de 18.000 kr./md — men hver kundekrone flytter en krone væk fra foreningens udgift og tættere på reel selvstændighed.</div>
+        <div>— <strong>Timepris: 240 kr. + moms</strong> ved 20 timers arbejde om ugen. Med 5 ugers normal ferie indregnet arbejdes der 47 uger à 20 timer = 940 timer/år. Det giver en omsætning på ca. 225.600 kr./år.</div>
+        <div>— Heraf går 216.000 kr. til honoraret (12 × 18.000 kr. — udbetalt alle 12 måneder, også i ferieugerne) og ca. 9.600 kr. til driftsudgifter: revisor og — når omsætningen overstiger 100.000 kr. — den mindste licens på Dinero til digital bogføring.</div>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: #94a3b8; margin: 16px 0 0 0;">Forudsætninger: B-indkomst uden væsentlige fradrag udover personfradraget, 8 % AM-bidrag og ca. 37 % i kommune-, sundheds- og bundskat (Helsingør). Ingen topskat i dette niveau. Momsen er aldrig Mikkels penge — den skal afregnes til Skat hvert halvår.</p>
+  </section>
+
+  <section style="padding: 48px 0 0 0;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: #2563eb; border: 1px solid #2563eb; border-radius: 16px; padding: 24px;">
+        <div class="hm-eyebrow" style="margin-bottom: 8px; color: rgba(248,250,252,0.75);">Samlet fakturering</div>
+        <div style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; color: #f8fafc;">18.000 kr./md + moms</div>
+        <div style="font-size: 14px; color: rgba(248,250,252,0.85); margin-top: 4px;">Kunder først — foreningen topper op til de 18.000 kr.</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid rgba(20,184,166,0.4); border-radius: 16px; padding: 24px;">
+        <div class="hm-eyebrow" style="margin-bottom: 8px; color: #0d9488;">Netto til Mikkel</div>
+        <div style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums;">≈ 12.000 kr./md</div>
+        <div style="font-size: 14px; color: #64748b; margin-top: 4px;">Efter AM-bidrag og skat — uafhængig af kontanthjælp.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <div style="position: relative; isolation: isolate; border-radius: 16px;">
+      <div style="position: absolute; inset: -4px; border-radius: 16px; background: linear-gradient(90deg, #f59e0b, #ef4444); filter: blur(12px); opacity: 0.25; z-index: -1;"></div>
+      <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 32px;">
+        <h2 style="font-weight: 700; font-size: 24px; letter-spacing: -0.025em; margin: 0 0 12px 0;">Sådan undgår vi et nyt moms-/skattehul</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.65; color: #64748b;">
+          <div>— <strong style="color: #0f172a;">Mikkel har selv ansvaret for at gemme moms- og skattepenge.</strong> Fast rutine: hver gang en faktura betales, flyttes momsen (25 %) og skattereservationen (≈ 33 % af honoraret) straks til en separat opsparingskonto, der ikke røres.</div>
+          <div>— <strong style="color: #0f172a;">B-skat betales aconto</strong> — forskudsopgørelsen opdateres hos Skat med den forventede B-indkomst (216.000 kr./år), så der løbende betales B-skatterater i stedet for en stor restskat.</div>
+          <div>— <strong style="color: #0f172a;">Overvej hyppigere momsindbetaling.</strong> Frem for at lade et halvt års moms hobe sig op kan Mikkel indbetale frivilligt/månedsvis via Skattekontoen — så fristerne aldrig rammer en tom konto.</div>
+          <div>— <strong style="color: #0f172a;">Momsregistrering og halvårsangivelse</strong> skal være på plads — og den gamle momsrestance (3.750 kr. fra de to juli-fakturaer) afregnes, evt. dækket af HF-opsparingen på 5.500 kr.</div>
+          <div>— <strong style="color: #0f172a;">Tjek grænsefladen til kontanthjælp:</strong> med 18.000 kr./md i honorar er Mikkel helt fri af kontanthjælpssystemet — ingen modregning, ingen rådighedskrav. Men beløbet skal være stabilt hver måned.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Næste skridt</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Step by step.</p>
+    <div style="display: flex; flex-direction: column;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 0 0 26px 0;">
+          <div style="width: 36px; height: 36px; border-radius: 9999px; background: rgba(59,130,246,0.1); color: #2563eb; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center;">{{ s.n }}</div>
+          <div>
+            <div style="font-weight: 600; font-size: 17px; margin-bottom: 4px;">{{ s.title }}</div>
+            <div style="font-size: 15px; line-height: 1.65; color: #64748b; max-width: 580px; text-wrap: pretty;">{{ s.body }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin-top: 48px; background: #f1f5f9; border-radius: 24px; padding: 40px; text-align: center;">
+    <p style="font-size: 19px; line-height: 1.6; margin: 0 auto; max-width: 560px; text-wrap: balance;">Egne kunder først, foreningen som garanti op til 18.000 kr. + moms — og en fast rutine, hvor Mikkel selv gemmer moms og skat fra dag ét. Det gør ham økonomisk selvkørende i sin egen lejlighed i Helsingør.</p>
+    <p style="font-size: 14px; color: #64748b; margin: 16px 0 0 0;">Se også: <a href="Status 20. juli 2026.dc.html">Status 20. juli</a> · <a href="Mikkels Forløb.dc.html">Tilbuddet fra Happy Mates</a> · <a href="Støtte i Helsingør Kommune.dc.html">Støttemuligheder i Helsingør</a> · <a href="Økonomi for foreningen.dc.html">Økonomi for foreningen</a></p>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const calcRows = [
+      { name: "Faktureret pr. måned (ekskl. moms)", note: "Kunder + foreningen tilsammen — foreningen topper op til beløbet.", amount: "18.000 kr.", bg: "#f8fafc", fg: "#020817", weight: "700" },
+      { name: "+ Moms 25 %", note: "Opkræves oveni, men er Skats penge — afregnes halvårligt.", amount: "4.500 kr.", bg: "#ffffff", fg: "#64748b", weight: "400" },
+      { name: "= Udbetalt fra foreningen inkl. moms", note: "", amount: "22.500 kr.", bg: "#ffffff", fg: "#64748b", weight: "400" },
+      { name: "− AM-bidrag 8 %", note: "Af de 18.000 kr.", amount: "1.440 kr.", bg: "#ffffff", fg: "#64748b", weight: "400" },
+      { name: "− Skat ca. 37 % efter personfradrag", note: "Af 16.560 kr. minus personfradrag (~4.300 kr./md) ≈ 4.540 kr.", amount: "≈ 4.540 kr.", bg: "#ffffff", fg: "#64748b", weight: "400" },
+      { name: "Netto til Mikkel", note: "Efter AM-bidrag og skat.", amount: "≈ 12.000 kr.", bg: "rgba(20,184,166,0.08)", fg: "#020817", weight: "700" },
+    ];
+    const steps = [
+      { n: "1", title: "Bekræft regnestykket", body: "Kør tallene gennem Skats forskudsberegner (eller en revisor) med Mikkels konkrete forhold — fradrag, evt. befordring, restskat fra i år." },
+      { n: "2", title: "Aftal top-op-modellen med foreningen", body: "Skriftlig aftale: Mikkel fakturerer selv sine kunder, og foreningen garanterer op til 18.000 kr. + moms pr. måned fra 1. september 2026 — opgørelse månedsvis, opgaver koordineret af en Opgave-coach." },
+      { n: "3", title: "Etabler Mikkels egen moms-/skatterutine", body: "Separat opsparingskonto + fast overførsel ved hver fakturabetaling (moms + ~33 % skat), B-skat aconto via forskudsopgørelsen, og evt. månedsvis frivillig momsindbetaling. Opgave-coachen følger op månedligt." },
+      { n: "4", title: "Ryd op i det gamle", body: "Afregn momsen fra de to juli-fakturaer (3.750 kr.), opdater forskudsopgørelsen og luk evt. kontanthjælpsansøgning, så der ikke opstår modregningssager." },
+    ];
+    return { calcRows, steps };
+  }
+}
+</script>
+</body>
+</html>

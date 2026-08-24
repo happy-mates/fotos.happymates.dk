@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/colors_and_type.css">
+<script src="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { color: #1e58d3; text-decoration: underline; }
+</style>
+</helmet>
+<div style="max-width: 880px; margin: 0 auto; padding: 0 24px 96px 24px;">
+
+  <header style="display: flex; align-items: center; gap: 12px; padding: 28px 0; border-bottom: 1px solid #e2e8f0;">
+    <img src="assets/happy-mates-logo.svg" alt="Happy Mates" style="width: 40px; height: 40px;">
+    <span class="hm-wordmark" style="font-size: 18px;">HAPPY MATES</span>
+    <span style="margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">Internt · budget 2026–27</span>
+  </header>
+
+  <section style="padding: 56px 0 40px 0;">
+    <div class="hm-eyebrow" style="margin-bottom: 16px;">Mikkels forløb · aug 2026 – aug 2027</div>
+    <h1 style="font-weight: 700; font-size: 44px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px 0; text-wrap: balance;">Økonomiske konsekvenser for foreningen</h1>
+    <p style="font-size: 19px; line-height: 1.6; color: #64748b; margin: 0; max-width: 620px; text-wrap: pretty;">Hvad forløbet koster over 12 måneder — honorar, coaching og mentor. Beløb ekskl. moms; satser kan justeres under Tweaks. Se selve tilbuddet her: <a href="Mikkels Forløb.dc.html">Mikkels forløb</a>.</p>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+    <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 24px;">
+      <div class="hm-eyebrow" style="margin-bottom: 8px;">Pr. måned</div>
+      <div style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums;">{{ mdTotalFmt }}</div>
+      <div style="font-size: 14px; color: #64748b; margin-top: 4px;">ekskl. moms</div>
+    </div>
+    <div style="background: #2563eb; border: 1px solid #2563eb; border-radius: 16px; padding: 24px;">
+      <div class="hm-eyebrow" style="margin-bottom: 8px; color: rgba(248,250,252,0.75);">12 måneder i alt</div>
+      <div style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; color: #f8fafc;">{{ aarTotalFmt }}</div>
+      <div style="font-size: 14px; color: rgba(248,250,252,0.85); margin-top: 4px;">ekskl. moms</div>
+    </div>
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px;">
+      <div class="hm-eyebrow" style="margin-bottom: 8px;">Merudgift vs. i dag</div>
+      <div style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums;">{{ merAarFmt }}</div>
+      <div style="font-size: 14px; color: #64748b; margin-top: 4px;">pr. år ({{ merMdFmt }}/md)</div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Posterne</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Line items.</p>
+    <div style="border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 1fr 150px 150px; gap: 16px; padding: 14px 24px; background: #f1f5f9; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">
+        <div>Post</div>
+        <div style="text-align: right;">Pr. måned</div>
+        <div style="text-align: right;">12 mdr.</div>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 1fr 150px 150px; gap: 16px; padding: 18px 24px; border-top: 1px solid #e2e8f0; align-items: baseline;">
+          <div>
+            <div style="font-weight: 600; font-size: 16px;">{{ r.name }}</div>
+            <div style="font-size: 14px; color: #64748b; margin-top: 2px; text-wrap: pretty;">{{ r.note }}</div>
+          </div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 600;">{{ r.md }}</div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 600;">{{ r.aar }}</div>
+        </div>
+      </sc-for>
+      <div style="display: grid; grid-template-columns: 1fr 150px 150px; gap: 16px; padding: 18px 24px; border-top: 2px solid #020817; align-items: baseline; background: #f8fafc;">
+        <div style="font-weight: 700; font-size: 16px;">I alt ekskl. moms</div>
+        <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 700;">{{ mdTotalFmt }}</div>
+        <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 700;">{{ aarTotalFmt }}</div>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: #94a3b8; margin: 16px 0 0 0;">Moms på Mikkels fakturaer (25 %) kommer oveni: {{ momsMdFmt }}/md — {{ momsAarFmt }} over året. Kontorpladsen i X-Padel er en eksisterende ramme uden merudgift. Coaching- og mentorsatser er skøn — ret dem under Tweaks, når aftalerne er på plads.</p>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <div style="position: relative; isolation: isolate; border-radius: 16px;">
+      <div style="position: absolute; inset: -4px; border-radius: 16px; background: linear-gradient(90deg, #f97316, #f59e0b); filter: blur(12px); opacity: 0.25; z-index: -1;"></div>
+      <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 32px;">
+        <h2 style="font-weight: 700; font-size: 24px; letter-spacing: -0.025em; margin: 0 0 12px 0;">Hvad foreningen får igen</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.6; color: #64748b;">
+          <div>— En Mate Trainee 5 dage om ugen på rigtige AI- og prompt-opgaver, stigende fra 3 til 5 timer dagligt.</div>
+          <div>— Leverancer andre i foreningen bygger videre på — Super Prompts, Surdejs-arbejde og daglig drift.</div>
+          <div>— Et konkret eksempel på foreningens kerneformål: et ungt talent hele vejen til studiestart.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;honorarMd&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 20000, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 0, &quot;step&quot;: 500, &quot;unit&quot;: &quot;kr./md&quot;, &quot;section&quot;: &quot;Satser&quot;}, &quot;coachingPrSession&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 1000, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 0, &quot;step&quot;: 100, &quot;unit&quot;: &quot;kr.&quot;, &quot;section&quot;: &quot;Satser&quot;}, &quot;mentorMd&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 0, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 0, &quot;step&quot;: 250, &quot;unit&quot;: &quot;kr./md&quot;, &quot;section&quot;: &quot;Satser&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n) => Math.round(n).toLocaleString("da-DK") + " kr.";
+    const honorar = this.props.honorarMd ?? 20000;
+    const coachSession = this.props.coachingPrSession ?? 1000;
+    const sessionsMd = 4;
+    const mentorMd = this.props.mentorMd ?? 0;
+    const coachMd = coachSession * sessionsMd;
+    const mdTotal = honorar + coachMd + mentorMd;
+    const idagMd = 7500;
+    const rows = [
+      { name: "Honorar — Mikkel", note: "Faktureret 20.000 kr. + moms pr. måned fra 1. august 2026 (i dag: 7.500 kr. + moms).", md: fmt(honorar), aar: fmt(honorar * 12) },
+      { name: "Coaching — psykoterapeut", note: "Ugentlig session hos Asger eller Daniel — skøn: " + fmt(coachSession) + " pr. session, 4 pr. måned.", md: fmt(coachMd), aar: fmt(coachMd * 12) },
+      { name: "Mentor — Martin", note: mentorMd === 0 ? "Efter behov — forudsat uden honorar." : "Efter behov — aftalt ramme.", md: fmt(mentorMd), aar: fmt(mentorMd * 12) },
+      { name: "Kontorplads — X-Padel", note: "Eksisterende kontor, ingen merudgift.", md: "0 kr.", aar: "0 kr." },
+    ];
+    return {
+      rows,
+      mdTotalFmt: fmt(mdTotal),
+      aarTotalFmt: fmt(mdTotal * 12),
+      merMdFmt: fmt(mdTotal - idagMd),
+      merAarFmt: fmt((mdTotal - idagMd) * 12),
+      momsMdFmt: fmt(honorar * 0.25),
+      momsAarFmt: fmt(honorar * 0.25 * 12),
+    };
+  }
+}
+</script>
+</body>
+</html>

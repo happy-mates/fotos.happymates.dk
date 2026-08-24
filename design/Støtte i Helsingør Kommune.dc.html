@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/colors_and_type.css">
+<script src="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { color: #1e58d3; text-decoration: underline; }
+</style>
+</helmet>
+<div style="max-width: 880px; margin: 0 auto; padding: 0 24px 96px 24px;">
+
+  <header style="display: flex; align-items: center; gap: 12px; padding: 28px 0; border-bottom: 1px solid #e2e8f0;">
+    <img src="assets/happy-mates-logo.svg" alt="Happy Mates" style="width: 40px; height: 40px;">
+    <span class="hm-wordmark" style="font-size: 18px;">HAPPY MATES</span>
+    <span style="margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">Til Lene &amp; Niels · juli 2026</span>
+  </header>
+
+  <section style="padding: 56px 0 40px 0;">
+    <div class="hm-eyebrow" style="margin-bottom: 16px;">Guide · Helsingør Kommune</div>
+    <h1 style="font-weight: 700; font-size: 44px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px 0; text-wrap: balance;">Støttemuligheder for Mikkel — bostøtte, botilbud og vejen derhen</h1>
+    <p style="font-size: 19px; line-height: 1.6; color: #64748b; margin: 0; max-width: 640px; text-wrap: pretty;">Mikkel har klaret tre år i egen lejlighed og en HF-eksamen — det er stort. Men det I så ved besøget, er et tydeligt signal om, at den nuværende støtte ikke rækker. Her er de muligheder, kommunen skal vurdere, og hvordan I kommer i gang.</p>
+  </section>
+
+  <section style="background: #f1f5f9; border-radius: 16px; padding: 28px 32px;">
+    <div class="hm-eyebrow" style="margin-bottom: 10px;">Situationen — kort</div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.6; color: #0f172a;">
+      <div>— 3 år i egen lejlighed i Helsingør, mentor (Gitte, Autismementor) 2 timer ugentligt.</div>
+      <div>— HF gennemført. Asperger-diagnose fra 2022.</div>
+      <div>— Første hjemmebesøg i 3 år viste klare tegn på mistrivsel: hundredvis af tomme flasker, affald, kaos.</div>
+      <div>— Konklusion: mentortimerne fastholder ikke hverdagen — der er brug for en formel, visiteret indsats.</div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Mulighederne — fra mindst til mest indgribende</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 28px 0; font-style: italic;">Kommunen skal altid vælge den mindst indgribende løsning, der virker.</p>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <sc-for list="{{ options }}" as="o" hint-placeholder-count="5">
+        <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 28px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; background: {{ o.badgeBg }}; color: {{ o.badgeFg }}; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 9999px; padding: 4px 12px;">{{ o.law }}</span>
+            <span style="font-weight: 700; font-size: 19px;">{{ o.title }}</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.65; color: #64748b; margin: 0 0 12px 0; text-wrap: pretty;">{{ o.body }}</p>
+          <div style="font-size: 14px; line-height: 1.6; color: #0f172a; background: #f8fafc; border-radius: 10px; padding: 12px 16px;"><strong>For Mikkel:</strong> {{ o.mikkel }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Sådan kommer I i gang</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 28px 0; font-style: italic;">Step by step.</p>
+    <div style="display: flex; flex-direction: column;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+        <div style="display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 0 0 26px 0;">
+          <div style="width: 36px; height: 36px; border-radius: 9999px; background: rgba(59,130,246,0.1); color: #2563eb; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center;">{{ s.n }}</div>
+          <div>
+            <div style="font-weight: 600; font-size: 17px; margin-bottom: 4px;">{{ s.title }}</div>
+            <div style="font-size: 15px; line-height: 1.65; color: #64748b; max-width: 580px; text-wrap: pretty;">{{ s.body }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: 40px 0 0 0;">
+    <div style="position: relative; isolation: isolate; border-radius: 16px;">
+      <div style="position: absolute; inset: -4px; border-radius: 16px; background: linear-gradient(90deg, #f59e0b, #ef4444); filter: blur(12px); opacity: 0.25; z-index: -1;"></div>
+      <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 32px;">
+        <h2 style="font-weight: 700; font-size: 24px; letter-spacing: -0.025em; margin: 0 0 12px 0;">Godt at vide, inden I ringer</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.65; color: #64748b;">
+          <div>— <strong style="color: #0f172a;">Mikkel skal selv sige ja.</strong> Han er myndig — I kan forberede alt, men ansøgningen kræver hans samtykke (eller en fuldmagt til jer som partsrepræsentanter).</div>
+          <div>— <strong style="color: #0f172a;">Dokumentér besøget.</strong> Tag billeder, skriv datoer og observationer ned. Sammen med diagnosen fra 2022 og Gittes notater er det kernen i sagen.</div>
+          <div>— <strong style="color: #0f172a;">Diagnosen udløser ikke støtte i sig selv</strong> — det gør det konkrete funktionsniveau. Beskriv hvad hverdagen faktisk ser ud som, ikke kun diagnosen.</div>
+          <div>— <strong style="color: #0f172a;">Vær tålmodige, men insister på skriftlighed.</strong> Op til 4 måneders sagsbehandling for § 85 og 5 for § 107. Bed altid om skriftlige afgørelser — de kan påklages til Ankestyrelsen inden 4 uger.</div>
+          <div>— <strong style="color: #0f172a;">Happy Mates-forløbet tæller med.</strong> En fast daglig struktur med arbejde, coaching og mentor er præcis den slags "afprøvet indsats", kommunen ser på — og det viser, at Mikkel kan, når rammen er rigtig.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Kontakter og hjælp udefra</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Who to call.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: #ffffff; border: 2px solid #2563eb; border-radius: 16px; padding: 24px;">
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">Visitation og Indsats — Center for Social Indsats og Bolig</div>
+        <div style="font-size: 14px; line-height: 1.6; color: #64748b;">Helsingør Kommunes indgang til § 85, § 107 og botilbud. Det er her, ansøgningen starter. Se <a href="https://www.helsingor.dk/borger/voksne-med-saerlige-behov/socialpaedagogisk-vejledning/">helsingor.dk — socialpædagogisk vejledning</a>.</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px;">
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">Autismeforeningens socialrådgiver</div>
+        <div style="font-size: 14px; line-height: 1.6; color: #64748b;">Gratis rådgivning om boformer, ansøgninger og klager — specialiseret i autisme. <a href="https://www.autismeforeningen.dk/raad-og-hjaelp/">autismeforeningen.dk</a>.</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px;">
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">DUKH — Den Uvildige Konsulentordning på Handicapområdet</div>
+        <div style="font-size: 14px; line-height: 1.6; color: #64748b;">Uvildig, gratis rådgivning om rettigheder og sagsforløb, hvis samarbejdet med kommunen bliver svært. <a href="https://www.dukh.dk">dukh.dk</a>.</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px;">
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">Gitte — Autismementor</div>
+        <div style="font-size: 14px; line-height: 1.6; color: #64748b;">Bed Gitte om et kort skriftligt notat om de sidste års forløb og hendes vurdering — det er guld værd i VUM-udredningen.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 72px; background: #f1f5f9; border-radius: 24px; padding: 40px; text-align: center;">
+    <p style="font-size: 19px; line-height: 1.6; margin: 0 auto; max-width: 560px; text-wrap: balance;">Det, I så i lejligheden, er ikke et nederlag — det er den dokumentation, der åbner døren til den rigtige støtte. Næste skridt: én opringning til Visitation og Indsats.</p>
+    <p style="font-size: 14px; color: #64748b; margin: 16px 0 0 0;">Se også: <a href="Mikkels Forløb.dc.html">Mikkels forløb hos Happy Mates</a> · <a href="Økonomi for foreningen.dc.html">Økonomi for foreningen</a></p>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const options = [
+      { law: "SEL § 82b", title: "Tidlig, forebyggende støtte", badgeBg: "#f1f5f9", badgeFg: "#0f172a",
+        body: "Kortere rådgivnings- og støtteforløb uden fuld visitation — kommunens hurtigste værktøj, mens en større sag behandles.",
+        mikkel: "Kan bruges som akut bro, mens § 85-sagen kører. Spørg direkte efter det ved første kontakt." },
+      { law: "SEL § 85 · Bostøtte", title: "Socialpædagogisk støtte i eget hjem", badgeBg: "#2563eb", badgeFg: "#f8fafc",
+        body: "Kommunens kernetilbud: hjælp til struktur, rengøring, økonomi, indkøb og mestring af hverdagen — fra en time om måneden til støtte i døgndrift. Gratis for borgeren. I Helsingør leveres den bl.a. af Socialpædagogisk støtteteam (SPUC). Sagsbehandlingstid op til 4 måneder.",
+        mikkel: "Det oplagte første skridt. Med dokumentationen fra besøget kan I argumentere for væsentligt flere timer end de nuværende mentortimer — og for individuel støtte i hjemmet frem for gruppetilbud." },
+      { law: "SEL § 83 · Hjemmehjælp", title: "Praktisk hjælp og rengøring", badgeBg: "#f1f5f9", badgeFg: "#0f172a",
+        body: "Praktisk bistand — rengøring, tøjvask — som supplement til bostøtten. Bostøtte træner færdigheder; hjemmehjælp løser det praktiske.",
+        mikkel: "Relevant som supplement lige nu: lejligheden skal reetableres, før træning i at holde den giver mening." },
+      { law: "U85 · Helsingør", title: "Udvidet støtte i egen bolig, kl. 8–22", badgeBg: "#14b8a6", badgeFg: "#f8fafc",
+        body: "Helsingørs eget mellemtrin: fleksibel støtte alle ugens dage fra 8 til 22, tilpasset et svingende behov — et alternativ til botilbud for borgere uden natbehov.",
+        mikkel: "Meget interessant: Mikkel beholder sin lejlighed og selvstændighed, men får massiv, fleksibel støtte. Spørg specifikt til U85." },
+      { law: "SEL § 107", title: "Midlertidigt botilbud", badgeBg: "#f59e0b", badgeFg: "#f8fafc",
+        body: "Botilbud for en periode, med personale og træning af færdigheder — målet er at kunne vende tilbage til egen bolig. Kræver at støttebehovet vurderes højt eller fuldstændigt. Kommunen vælger tilbuddet (ikke frit valg); sagsbehandlingstid op til 5 måneder.",
+        mikkel: "Plan B, hvis støtte i egen bolig viser sig ikke at række. Kommunen skal dog først have afprøvet mindre indgribende indsatser — endnu en grund til at starte § 85-sagen nu." },
+      { law: "ABL § 105 / SEL § 108", title: "Længerevarende botilbud / handicapbolig", badgeBg: "#f1f5f9", badgeFg: "#0f172a",
+        body: "Varige boformer med støtte — almen handicapbolig med egen lejekontrakt (kan ikke opsiges af kommunen) eller længerevarende botilbud. Her er der frit valg af tilbud.",
+        mikkel: "Ikke aktuelt nu, men godt at kende: hvis behovet viser sig varigt, er en § 105-bolig med bostøtte ofte den mest selvstændige langtidsløsning." },
+    ];
+    const steps = [
+      { n: "1", title: "Ring til Visitation og Indsats", body: "Center for Social Indsats og Bolig i Helsingør Kommune er indgangen til al voksenstøtte. Bed om en ansøgning om socialpædagogisk støtte efter § 85 — og nævn U85 og behovet for en hurtig, midlertidig indsats (§ 82b)." },
+      { n: "2", title: "Få Mikkels samtykke — og en fuldmagt", body: "Aftal med Mikkel, at I må tale med kommunen på hans vegne. En simpel skriftlig fuldmagt gør jer til partsrepræsentanter, så I kan følge sagen." },
+      { n: "3", title: "Saml dokumentationen", body: "Diagnosen (2022), billeder og noter fra besøget, Gittes mentornotater, og en kort beskrivelse af hverdagen: hvad fungerer, hvad er brudt sammen. Kommunen har pligt til at oplyse sagen, men jeres materiale styrer retningen." },
+      { n: "4", title: "VUM-udredning og § 141-handleplan", body: "Kommunen udreder Mikkels funktionsniveau med Voksenudredningsmetoden (VUM 2.0) og skal tilbyde en handleplan med mål. Deltag i mødet sammen med Mikkel — og sørg for at mistrivslen bliver beskrevet ærligt, ikke pyntet." },
+      { n: "5", title: "Sideløbende: hold hverdagen kørende", body: "Happy Mates-forløbet, den daglige aftensmad i Espergærde og Gittes timer er det sikkerhedsnet, der holder, mens sagen behandles. Det er også dokumentation for, hvad der virker." },
+      { n: "6", title: "Afgørelse — og evt. klage", body: "Kræv en skriftlig afgørelse med begrundelse. Ved afslag eller for få timer: klagefristen til Ankestyrelsen er 4 uger, og Autismeforeningen eller DUKH kan hjælpe med klagen." },
+    ];
+    return { options, steps };
+  }
+}
+</script>
+</body>
+</html>

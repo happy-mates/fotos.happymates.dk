@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/colors_and_type.css">
+<script src="_ds/happy-mates-design-system-019e2c51-c6f5-79d5-8af1-484a4845eab4/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { color: #1e58d3; text-decoration: underline; }
+  input[type="number"] { font-family: inherit; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; animation-play-state: running !important; transition-duration: 0s !important; }
+</style>
+</helmet>
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" margin="0.75in" hint-size="100%,100%">
+
+  <header style="display: flex; align-items: center; gap: 12px; padding: 28px 0; border-bottom: 1px solid #e2e8f0;">
+    <img src="assets/happy-mates-logo.svg" alt="Happy Mates" style="width: 40px; height: 40px;">
+    <span class="hm-wordmark" style="font-size: 18px;">HAPPY MATES</span>
+    <span style="margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">Ydelsesbeskrivelse · august 2026</span>
+  </header>
+
+  <section style="padding: 56px 0 40px 0;">
+    <div class="hm-eyebrow" style="margin-bottom: 16px;">Mikkels ydelse</div>
+    <h1 style="font-weight: 700; font-size: 44px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px 0; text-wrap: balance;">Dine minder — digitaliseret og sikret</h1>
+    <p style="font-size: 19px; line-height: 1.6; color: #64748b; margin: 0; max-width: 640px; text-wrap: pretty;">Digitalisering af fotos fra negativ, papir eller dias i topkvalitet — og hjælp til at tømme gamle telefoner og computere og sætte automatisk synkronisering op til Google Photos. Så intet går tabt igen.</p>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; break-inside: avoid;">
+    <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 28px;">
+      <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(59,130,246,0.1); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #2563eb; font-size: 18px; margin-bottom: 14px;">1</div>
+      <div style="font-weight: 700; font-size: 19px; margin-bottom: 8px;">Scanning af dias, negativer og papirbilleder</div>
+      <div style="font-size: 15px; line-height: 1.65; color: #64748b; text-wrap: pretty;">Dias og negativer scannes i op til <strong style="color: #0f172a;">4000 DPI med infrarød støv- og ridsefjernelse</strong> — topkvalitet, der holder til print og forstørrelse. Papirbilleder scannes i høj opløsning. Alt leveres sorteret i mapper, navngivet og klar til Google Photos.</div>
+    </div>
+    <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 28px;">
+      <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(20,184,166,0.1); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #0d9488; font-size: 18px; margin-bottom: 14px;">2</div>
+      <div style="font-weight: 700; font-size: 19px; margin-bottom: 8px;">Tømning af devices + Google Photos-opsætning</div>
+      <div style="font-size: 15px; line-height: 1.65; color: #64748b; text-wrap: pretty;">Gamle telefoner, tablets og computere tømmes for billeder og video, dubletter fjernes, og der sættes <strong style="color: #0f172a;">automatisk synkronisering op til Google Photos</strong> — så alle fremtidige billeder sikres af sig selv. Afregnes pr. time.</div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Priser</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Alle priser ekskl. moms.</p>
+    <div style="border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 1fr 130px 150px; gap: 16px; padding: 14px 24px; background: #f1f5f9; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">
+        <div>Ydelse</div><div style="text-align: right;">Pris</div><div style="text-align: right;">Tempo (est.)</div>
+      </div>
+      <sc-for list="{{ prices }}" as="p" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 1fr 130px 150px; gap: 16px; padding: 16px 24px; border-top: 1px solid #e2e8f0; align-items: baseline;">
+          <div>
+            <div style="font-weight: 600; font-size: 15px;">{{ p.name }}</div>
+            <div style="font-size: 13px; color: #94a3b8; margin-top: 2px;">{{ p.note }}</div>
+          </div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 600;">{{ p.price }}</div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; color: #64748b; font-size: 14px;">{{ p.pace }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Mini-simulering — hvad giver en typisk måned?</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Justér antallene og se omsætning og timeforbrug.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; break-inside: avoid;">
+      <div style="background: #ffffff; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: grid; grid-template-columns: 1fr 100px; gap: 12px; align-items: center;">
+          <label style="font-size: 14px; font-weight: 600;">Dias (4000 DPI + infrarød) <span style="color: #94a3b8; font-weight: 400;">à 10 kr.</span></label>
+          <input type="number" min="0" step="50" value="{{ dias }}" onChange="{{ setDias }}" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; font-size: 15px; text-align: right; width: 100%; box-sizing: border-box;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 100px; gap: 12px; align-items: center;">
+          <label style="font-size: 14px; font-weight: 600;">Negativer (4000 DPI + infrarød) <span style="color: #94a3b8; font-weight: 400;">à 10 kr.</span></label>
+          <input type="number" min="0" step="50" value="{{ neg }}" onChange="{{ setNeg }}" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; font-size: 15px; text-align: right; width: 100%; box-sizing: border-box;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 100px; gap: 12px; align-items: center;">
+          <label style="font-size: 14px; font-weight: 600;">Papirbilleder <span style="color: #94a3b8; font-weight: 400;">à 10 kr.</span></label>
+          <input type="number" min="0" step="50" value="{{ papir }}" onChange="{{ setPapir }}" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; font-size: 15px; text-align: right; width: 100%; box-sizing: border-box;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 100px; gap: 12px; align-items: center;">
+          <label style="font-size: 14px; font-weight: 600;">Device-hjælp, timer <span style="color: #94a3b8; font-weight: 400;">à 320 kr.</span></label>
+          <input type="number" min="0" step="1" value="{{ devTimer }}" onChange="{{ setDevTimer }}" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; font-size: 15px; text-align: right; width: 100%; box-sizing: border-box;">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: #2563eb; border-radius: 16px; padding: 22px;">
+          <div class="hm-eyebrow" style="color: rgba(248,250,252,0.75); margin-bottom: 6px;">Kundeomsætning pr. måned</div>
+          <div style="font-weight: 700; font-size: 28px; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; color: #f8fafc;">{{ simOmsFmt }}</div>
+          <div style="font-size: 13px; color: rgba(248,250,252,0.85); margin-top: 4px;">ekskl. moms</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px;">
+          <div class="hm-eyebrow" style="margin-bottom: 6px;">Timeforbrug</div>
+          <div style="font-weight: 700; font-size: 24px; font-variant-numeric: tabular-nums;">{{ simTimerFmt }}</div>
+          <div style="font-size: 13px; color: #64748b; margin-top: 4px;">af ca. 86 timer/md (20 t/uge) — {{ simKapacitet }}</div>
+        </div>
+        <div style="background: {{ topOpBg }}; border: 1px solid {{ topOpBorder }}; border-radius: 16px; padding: 22px;">
+          <div class="hm-eyebrow" style="margin-bottom: 6px; color: {{ topOpLabel }};">Foreningen topper op med</div>
+          <div style="font-weight: 700; font-size: 24px; font-variant-numeric: tabular-nums; color: {{ topOpFg }};">{{ topOpFmt }}</div>
+          <div style="font-size: 13px; color: {{ topOpSub }}; margin-top: 4px;">op til garantien på 18.800 kr./md (honorar + drift)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 64px 0 0 0; break-before: page;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Budget — september 2026 til december 2027</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">20 t/uge à 320 kr. (400 kr. inkl. moms) — fra studiestart 1.9.2027: 10 t/uge + SU. Ferie: 2 uger jul, 1 uge vinter, 2 uger sommer. Honoraret på 18.000 kr. udbetales alle 12 måneder i det første år.</p>
+    <div style="border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 1.2fr 90px 110px 130px 1fr; gap: 12px; padding: 14px 24px; background: #f1f5f9; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b;">
+        <div>Måned</div><div style="text-align: right;">Uger</div><div style="text-align: right;">Timer</div><div style="text-align: right;">Omsætning</div><div>Note</div>
+      </div>
+<!-- budget: sep 2026 – aug 2027; herefter studiestart 1.9.2027 med SU + 50 % --><sc-for list="{{ budget }}" as="b" hint-placeholder-count="12">
+        <div style="display: grid; grid-template-columns: 1.2fr 90px 110px 130px 1fr; gap: 12px; padding: 13px 24px; border-top: 1px solid #e2e8f0; align-items: baseline; background: {{ b.bg }};">
+          <div style="font-weight: 600; font-size: 14px;">{{ b.md }}</div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-size: 14px; color: #64748b;">{{ b.uger }}</div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-size: 14px; color: #64748b;">{{ b.timer }}</div>
+          <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px;">{{ b.oms }}</div>
+          <div style="font-size: 13px; color: {{ b.noteFg }};">{{ b.note }}</div>
+        </div>
+      </sc-for>
+      <div style="display: grid; grid-template-columns: 1.2fr 90px 110px 130px 1fr; gap: 12px; padding: 15px 24px; border-top: 2px solid #020817; background: #f8fafc; align-items: baseline;">
+        <div style="font-weight: 700; font-size: 14px;">I alt · sep 2026 – dec 2027</div>
+        <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 14px;">62,5</div>
+        <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 14px;">1.095</div>
+        <div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 14px;">350.400 kr.</div>
+        <div style="font-size: 13px; color: #64748b;">Første år: 300.800 kr. (940 t) · sep–dec 2027 på 50 %: 49.600 kr. (155 t)</div>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: #94a3b8; margin: 16px 0 0 0;">Omsætningen dækkes af kundefakturaer først — resten faktureres foreningen (top-op-modellen). Se <a href="Status 24. august 2026.dc.html">status 24. august</a> for skat, moms og nettoberegning.</p>
+  </section>
+
+  <section style="padding: 64px 0 0 0;">
+    <h2 style="font-weight: 700; font-size: 30px; letter-spacing: -0.025em; margin: 0 0 6px 0;">Forventet regnskab</h2>
+    <p style="font-size: 14px; color: #94a3b8; margin: 0 0 24px 0; font-style: italic;">Baseret på den garanterede fakturering (18.800 kr./md ekskl. moms). Overslag — bekræftes med revisor.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+      <sc-for list="{{ regnskaber }}" as="r" hint-placeholder-count="2">
+        <div style="border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; break-inside: avoid;">
+          <div style="padding: 16px 24px; background: #f1f5f9;">
+            <div style="font-weight: 700; font-size: 16px;">{{ r.aar }}</div>
+            <div style="font-size: 13px; color: #64748b; margin-top: 2px;">{{ r.periode }}</div>
+          </div>
+          <sc-for list="{{ r.linjer }}" as="l" hint-placeholder-count="6">
+            <div style="display: grid; grid-template-columns: 1fr 120px; gap: 12px; padding: 12px 24px; border-top: 1px solid #e2e8f0; align-items: baseline; background: {{ l.bg }};">
+              <div style="font-size: 14px; font-weight: {{ l.weight }}; color: {{ l.fg }};">{{ l.navn }}</div>
+              <div style="text-align: right; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: {{ l.weight }}; color: {{ l.fg }};">{{ l.beloeb }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size: 13px; color: #94a3b8; margin: 16px 0 0 0;">Skat er skønnet med 8 % AM-bidrag, personfradrag og ca. 37 % trækprocent. Fra 1. september 2027 starter Mikkel på studie: SU for udeboende (ca. 7.100 kr./md før skat) kommer oveni fotoforretningens 50 %-omsætning — SU'en indgår ikke i regnskabet ovenfor. Momsen (25 % oveni) afregnes til Skat og indgår heller ikke.</p>
+  </section>
+
+  <section style="margin-top: 72px; background: #f1f5f9; border-radius: 24px; padding: 40px; text-align: center; break-inside: avoid;">
+    <p style="font-size: 19px; line-height: 1.6; margin: 0 auto; max-width: 560px; text-wrap: balance;">Et ægte produkt med ægte kunder — bygget på tålmodighed, systematik og sans for detaljen. Præcis dét, Mikkel er god til.</p>
+  </section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dias: 600, neg: 400, papir: 500, devTimer: 8 };
+  renderVals() {
+    const fmt = (n) => Math.round(n).toLocaleString("da-DK") + " kr.";
+    const { dias, neg, papir, devTimer } = this.state;
+    const oms = dias * 10 + neg * 10 + papir * 10 + devTimer * 320;
+    const timer = dias / 20 + neg / 30 + papir / 50 + devTimer;
+    const maal = 18800;
+    const topOp = Math.max(0, maal - oms);
+    const over = oms >= maal;
+    const kap = timer > 86 ? "over kapacitet!" : Math.round((timer / 86) * 100) + " % udnyttet";
+    const num = (setter) => (e) => { const v = parseInt(e.target.value, 10); this.setState({ [setter]: isNaN(v) ? 0 : Math.max(0, v) }); };
+    const prices = [
+      { name: "Dias-scanning — topkvalitet", note: "4000 DPI + infrarød støv-/ridsefjernelse (ICE).", price: "10 kr./stk.", pace: "ca. 20 stk./time" },
+      { name: "Negativ-scanning — topkvalitet", note: "4000 DPI + infrarød, hele strimler.", price: "10 kr./stk.", pace: "ca. 30 stk./time" },
+      { name: "Papirbillede-scanning", note: "600 DPI, op til A4, let billedjustering.", price: "10 kr./stk.", pace: "ca. 50 stk./time" },
+      { name: "Timeydelser — device-hjælp og hjemmescanning", note: "Telefoner, tablets og pc'er — inkl. dubletfjernelse og opsætning. 400 kr. inkl. moms.", price: "320 kr./time", pace: "typisk 2–4 timer pr. hjem" },
+    ];
+    const mdr = [
+      ["September 2026", 4.4], ["Oktober 2026", 4.4], ["November 2026", 4.3],
+      ["December 2026", 2.4, "Juleferie — 2 uger", true],
+      ["Januar 2027", 4.4],
+      ["Februar 2027", 3.4, "Vinterferie — 1 uge", true],
+      ["Marts 2027", 4.4], ["April 2027", 4.3], ["Maj 2027", 4.4], ["Juni 2027", 4.3],
+      ["Juli 2027", 2.4, "Sommerferie — 2 uger", true],
+      ["August 2027", 3.9],
+      ["September 2027", 4.4, "Studiestart 1.9 — 50 % (10 t/uge) + SU", true, 10],
+      ["Oktober 2027", 4.4, "50 % + SU", false, 10],
+      ["November 2027", 4.3, "50 % + SU", false, 10],
+      ["December 2027", 2.4, "Juleferie — 2 uger · 50 % + SU", true, 10],
+    ];
+    const budget = mdr.map(([md, uger, note, ferie, tpu]) => {
+      const t = Math.round(uger * (tpu || 20));
+      return { md, uger: uger.toFixed(1).replace(".", ","), timer: t, oms: fmt(t * 320),
+        note: note || "", noteFg: ferie ? "#e63946" : "#64748b", bg: ferie ? "rgba(230,57,70,0.05)" : "#ffffff" };
+    });
+    const regnLinjer = (mdrCount, halveMdr = 0) => {
+      const oms = 18800 * mdrCount + 9400 * halveMdr, drift = 800 * (mdrCount + halveMdr), res = oms - drift;
+      const am = res * 0.08, fradrag = 4300 * (mdrCount + halveMdr);
+      const skat = Math.max(0, (res - am - fradrag)) * 0.37;
+      const netto = res - am - skat;
+      return [
+        { navn: "Omsætning (ekskl. moms)", beloeb: fmt(oms), weight: "600", fg: "#020817", bg: "#ffffff" },
+        { navn: "− Driftsudgifter (revisor, Dinero)", beloeb: fmt(drift), weight: "400", fg: "#64748b", bg: "#ffffff" },
+        { navn: "= Resultat før skat", beloeb: fmt(res), weight: "600", fg: "#020817", bg: "#f8fafc" },
+        { navn: "− AM-bidrag 8 %", beloeb: fmt(am), weight: "400", fg: "#64748b", bg: "#ffffff" },
+        { navn: "− Skat (efter personfradrag, ca. 37 %)", beloeb: fmt(skat), weight: "400", fg: "#64748b", bg: "#ffffff" },
+        { navn: "Netto til Mikkel", beloeb: fmt(netto), weight: "700", fg: "#020817", bg: "rgba(20,184,166,0.08)" },
+      ];
+    };
+    const regnskaber = [
+      { aar: "2026", periode: "September – december (4 måneder)", linjer: regnLinjer(4) },
+      { aar: "2027", periode: "Jan–aug fuld tid · fra 1. september studiestart med SU og 50 % i fotoforretningen", linjer: regnLinjer(8, 4) },
+    ];
+    return {
+      prices, budget, regnskaber,
+      dias, neg, papir, devTimer,
+      setDias: num("dias"), setNeg: num("neg"), setPapir: num("papir"), setDevTimer: num("devTimer"),
+      simOmsFmt: fmt(oms),
+      simTimerFmt: Math.round(timer) + " timer",
+      simKapacitet: kap,
+      topOpFmt: over ? "0 kr. 🎉".replace(" 🎉", "") : fmt(topOp),
+      topOpBg: over ? "rgba(20,184,166,0.08)" : "#ffffff",
+      topOpBorder: over ? "rgba(20,184,166,0.4)" : "#e2e8f0",
+      topOpLabel: over ? "#0d9488" : "#64748b",
+      topOpFg: "#020817",
+      topOpSub: "#64748b",
+    };
+  }
+}
+</script>
+</body>
+</html>
