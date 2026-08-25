@@ -19,14 +19,21 @@
     <meta name="twitter:title" content="Dine minder ligger i en kasse. Vi redder dem." />
     <meta name="twitter:description" content="Scanning af dias, negativer og papirbilleder i topkvalitet — samlet og sikret i Google Photos." />
     <meta name="twitter:image" content="https://fotos.happymates.dk/assets/og.jpg" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CR8FF1D97V"></script>
+    <!-- Google tag (gtag.js) — Consent Mode v2: alt nægtet indtil samtykke -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
       gtag('js', new Date());
       gtag('config', 'G-CR8FF1D97V');
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CR8FF1D97V"></script>
   </head>
   <body>
     <nav class="site-nav">
@@ -140,7 +147,7 @@
           <a href="mailto:fotos@happymates.dk" class="btn btn-primary btn-lg">fotos@happymates.dk</a>
           <a href="tel:+4522803750" class="btn btn-outline btn-lg btn-white">Ring til os — 22 80 37 50</a>
         </div>
-        <p class="contact-note">Drevet af Mikkel G. H. Johansen foto og it — med støtte fra foreningen Happy Mates.</p>
+        <p class="contact-note">Drevet med støtte fra foreningen Happy Mates.</p>
       </div>
     </section>
 
@@ -148,12 +155,20 @@
       <div class="container footer-inner">
         <img src="/assets/happy-mates-logo.svg" alt="Happy Mates" class="footer-logo" />
         <div class="footer-text">
-          <div>Mikkel G. H. Johansen foto og it · CVR 46489152 · med støtte fra <a href="https://happymates.dk">Happy Mates</a></div>
-          <div class="footer-address">C/O Mikkel G. H. Johansen, Kongensgade 23, 3. 134, 3000 Helsingør · fotos.happymates.dk</div>
+          <div>fotos.happymates.dk · med støtte fra <a href="https://happymates.dk">Happy Mates</a></div>
+          <div class="footer-address">3000 Helsingør</div>
         </div>
         <span class="footer-copy">© 2026</span>
       </div>
     </footer>
+
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie-samtykke" hidden>
+      <p class="cookie-text">Vi vil gerne bruge en cookie til anonym besøgsstatistik (Google Analytics), så vi kan se, om siden bliver brugt. Ingen annoncer — og sitet virker fint, hvis du siger nej.</p>
+      <div class="cookie-actions">
+        <button id="consent-decline" class="btn btn-outline" type="button">Nej tak</button>
+        <button id="consent-accept" class="btn btn-primary" type="button">Ja tak</button>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

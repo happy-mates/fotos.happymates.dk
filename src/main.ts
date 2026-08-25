@@ -40,3 +40,37 @@ document.querySelector<HTMLDivElement>('#steps-grid')!.innerHTML = steps
     </div>`,
   )
   .join('')
+
+// Cookie-samtykke: GA er 'denied' som default (Consent Mode v2 i index.html)
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
+const CONSENT_KEY = 'hm-consent'
+const banner = document.querySelector<HTMLDivElement>('#cookie-banner')!
+
+function grantAnalytics() {
+  window.gtag?.('consent', 'update', { analytics_storage: 'granted' })
+}
+
+const stored = localStorage.getItem(CONSENT_KEY)
+if (stored === 'granted') {
+  grantAnalytics()
+} else if (stored === null) {
+  banner.hidden = false
+}
+
+document.querySelector('#consent-accept')!.addEventListener('click', () => {
+  localStorage.setItem(CONSENT_KEY, 'granted')
+  grantAnalytics()
+  banner.hidden = true
+})
+
+document.querySelector('#consent-decline')!.addEventListener('click', () => {
+  localStorage.setItem(CONSENT_KEY, 'denied')
+  banner.hidden = true
+})
+
+export {}
