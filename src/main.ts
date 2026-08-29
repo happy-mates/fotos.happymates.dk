@@ -8,6 +8,7 @@ const prices: Price[] = [
   { name: 'Dias', price: '12,50 kr.', unit: 'pr. stk. inkl. moms', note: '4000 DPI + infrarød støv- og ridsefjernelse.', featured: true },
   { name: 'Negativer', price: '12,50 kr.', unit: 'pr. billede inkl. moms', note: '4000 DPI + infrarød — hele strimler modtages.' },
   { name: 'Papirbilleder', price: '12,50 kr.', unit: 'pr. stk. inkl. moms', note: 'Høj opløsning, op til A4, let billedjustering.' },
+  { name: 'DVD til MP4', price: '62,50 kr.', unit: 'pr. påbegyndt 30 min. inkl. moms', note: 'DVD-film konverteres til MP4 — klar til Google Photos og deling.' },
   { name: 'Timepris', price: '400 kr.', unit: 'pr. time inkl. moms', note: 'Device-hjælp, Google Photos-opsætning — og scanning hos jer selv på ren timebasis.' },
 ]
 
