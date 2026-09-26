@@ -1,22 +1,25 @@
 import './hm-tokens.css'
 import './style.css'
+import { initConsent } from './consent'
 
 type Price = { name: string; price: string; unit: string; note: string; featured?: boolean }
 type Step = { n: number; title: string; body: string }
 
 const prices: Price[] = [
-  { name: 'Dias', price: '12,50 kr.', unit: 'pr. stk. inkl. moms', note: '4000 DPI + infrarød støv- og ridsefjernelse.', featured: true },
-  { name: 'Negativer', price: '12,50 kr.', unit: 'pr. billede inkl. moms', note: '4000 DPI + infrarød — hele strimler modtages.' },
-  { name: 'Papirbilleder', price: '12,50 kr.', unit: 'pr. stk. inkl. moms', note: 'Høj opløsning, op til A4, let billedjustering.' },
-  { name: 'DVD til MP4', price: '62,50 kr.', unit: 'pr. påbegyndt 30 min. inkl. moms', note: 'DVD-film konverteres til MP4 — klar til Google Photos og deling.' },
-  { name: 'Timepris', price: '400 kr.', unit: 'pr. time inkl. moms', note: 'Device-hjælp, Google Photos-opsætning — og scanning hos jer selv på ren timebasis.' },
+  { name: 'Dias — topkvalitet', price: '10 kr.', unit: 'pr. stk. inkl. moms', note: '4000 DPI + infrarød støv- og ridsefjernelse.', featured: true },
+  { name: 'Dias — kvikscanning', price: '3,12 kr.', unit: 'pr. stk. inkl. moms', note: 'Hurtig scanning i god kvalitet — oplagt til store samlinger og deling på skærm.' },
+  { name: 'Negativer', price: '12,50 kr.', unit: 'pr. billede inkl. moms', note: '4000 DPI + infrarød. Send hele strimler — vi klipper ikke.' },
+  { name: 'Papirbilleder', price: '12,50 kr.', unit: 'pr. stk. inkl. moms', note: 'Høj opløsning, op til A4, med let justering af farver og beskæring.' },
+  { name: 'DVD til MP4', price: '62,50 kr.', unit: 'pr. påbegyndt halve time inkl. moms', note: 'Hjemmevideoer overføres til MP4 — klar til at se og dele.' },
+  { name: 'Smalfilm, videobånd, lyd og glasplader', price: 'Tilbud', unit: 'fast pris inkl. moms', note: 'Vi giver dig en fast pris, når vi kender omfanget. Kontakt os.' },
+  { name: 'Timepris', price: '400 kr.', unit: 'pr. time inkl. moms', note: 'Hjælp til telefoner, computere og backup — samt scanning hjemme hos jer.' },
 ]
 
 const steps: Step[] = [
-  { n: 1, title: 'Aflever, vi henter — eller vi kommer til jer', body: 'Kom forbi med kassen, vi henter (kørsel efter statens takst) — eller vi scanner hjemme hos jer på timebasis.' },
-  { n: 2, title: 'Vi scanner og tjekker', body: 'Hvert billede scannes i topkvalitet og kvalitetstjekkes manuelt.' },
-  { n: 3, title: 'Sorteret og navngivet', body: 'Du får det hele i mapper — pr. år, æske eller emne, som du vil.' },
-  { n: 4, title: 'Sikret i skyen', body: 'Vi lægger det i Google Photos og sætter automatisk backup op.' },
+  { n: 1, title: 'Aflevering', body: 'Kom forbi med kassen, lad os hente den — eller få os til at scanne hjemme hos dig.' },
+  { n: 2, title: 'Vi digitaliserer og tjekker', body: 'Alt digitaliseres i høj kvalitet og tjekkes manuelt.' },
+  { n: 3, title: 'Sorteret og navngivet', body: 'Du får det hele i mapper — efter år, æske eller emne. Du bestemmer.' },
+  { n: 4, title: 'Gemt, hvor du vil', body: 'På USB, harddisk, din computer eller din egen sky — vi hjælper dig med at få det gemt dér, hvor du vil have det.' },
 ]
 
 document.querySelector<HTMLDivElement>('#price-grid')!.innerHTML = prices
@@ -42,36 +45,4 @@ document.querySelector<HTMLDivElement>('#steps-grid')!.innerHTML = steps
   )
   .join('')
 
-// Cookie-samtykke: GA er 'denied' som default (Consent Mode v2 i index.html)
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void
-  }
-}
-
-const CONSENT_KEY = 'hm-consent'
-const banner = document.querySelector<HTMLDivElement>('#cookie-banner')!
-
-function grantAnalytics() {
-  window.gtag?.('consent', 'update', { analytics_storage: 'granted' })
-}
-
-const stored = localStorage.getItem(CONSENT_KEY)
-if (stored === 'granted') {
-  grantAnalytics()
-} else if (stored === null) {
-  banner.hidden = false
-}
-
-document.querySelector('#consent-accept')!.addEventListener('click', () => {
-  localStorage.setItem(CONSENT_KEY, 'granted')
-  grantAnalytics()
-  banner.hidden = true
-})
-
-document.querySelector('#consent-decline')!.addEventListener('click', () => {
-  localStorage.setItem(CONSENT_KEY, 'denied')
-  banner.hidden = true
-})
-
-export {}
+initConsent()

@@ -131,6 +131,12 @@ a:hover {
 .glow-teal {
   background: linear-gradient(90deg, #14b8a6, #06d6a0);
 }
+.glow-orange {
+  background: linear-gradient(90deg, var(--hm-brand-orange), var(--hm-brand-yellow));
+}
+.glow-rainbow {
+  background: var(--hm-brand-gradient-tri);
+}
 .glow-quality {
   background: linear-gradient(90deg, var(--hm-brand-orange), var(--hm-brand-yellow));
   filter: blur(16px);
@@ -165,7 +171,6 @@ h1 {
   line-height: 1.6;
   color: var(--hm-muted-foreground);
   margin: 0 0 32px 0;
-  max-width: 520px;
   text-wrap: pretty;
 }
 .hero-ctas {
@@ -215,7 +220,7 @@ h1 {
 /* ── Services ───────────────────────────────────────────────────────── */
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .service-card {
@@ -462,7 +467,6 @@ h1 {
     font-size: 38px;
   }
   .hero-grid,
-  .services-grid,
   .quality-grid {
     grid-template-columns: 1fr;
   }
@@ -474,14 +478,16 @@ h1 {
     height: 300px;
   }
   .price-grid,
-  .steps-grid {
+  .steps-grid,
+  .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 520px) {
   .price-grid,
-  .steps-grid {
+  .steps-grid,
+  .services-grid {
     grid-template-columns: 1fr;
   }
   .section-pad {
@@ -528,4 +534,103 @@ h1 {
     align-items: stretch;
     text-align: center;
   }
+}
+
+/* ── Juridiske links + sider ────────────────────────────────────────── */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 4px;
+}
+.footer-links a,
+.link-button {
+  font-size: 13px;
+  color: var(--hm-muted-foreground);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+.link-button:hover,
+.footer-links a:hover {
+  color: var(--hm-primary);
+}
+.cookie-text a {
+  text-decoration: underline;
+}
+
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+}
+.nav-home:hover {
+  color: inherit;
+}
+
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.legal h1 {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+.legal h2 {
+  font-size: 22px;
+  margin: 40px 0 8px;
+  letter-spacing: var(--hm-tracking-tight);
+}
+.legal h3 {
+  font-size: 17px;
+  margin: 24px 0 6px;
+}
+.legal p,
+.legal li {
+  color: #334155;
+}
+.legal a {
+  text-decoration: underline;
+}
+.legal .link-button {
+  font-size: inherit;
+  color: var(--hm-primary);
+}
+.legal-updated {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0 0 24px;
+}
+.legal-box {
+  background: rgba(241, 245, 249, 0.6);
+  border: 1px solid var(--hm-border);
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin: 16px 0;
+}
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 12px 0;
+}
+.legal th,
+.legal td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--hm-border);
+}
+.legal-table-wrap {
+  overflow-x: auto;
 }

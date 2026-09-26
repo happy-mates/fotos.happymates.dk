@@ -1,6 +1,6 @@
 # fotos.happymates.dk
 
-Landingsside for foto-digitalisering (dias, negativer, papirbilleder og device-tømning) — drevet af Mikkel G. H. Johansen foto og it med støtte fra Happy Mates.
+Landingsside for foto-digitalisering (dias, negativer, papirbilleder og device-tømning) — drevet af Foreningen Happy Mates (CVR 46371771).
 
 ## Udvikling
 
