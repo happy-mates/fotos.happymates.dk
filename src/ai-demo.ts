@@ -8,6 +8,11 @@ import { initConsent } from './consent'
 // demo.json + media/. A folder comes either from /ai-demo/<id>/ on this site
 // (listed in /ai-demo/index.json) or is opened from disk, in which case the
 // files never leave the browser (object URLs only).
+//
+// VITE_AI_DEMO_BASE moves the published demos elsewhere (e.g. the
+// happy-mates/ai-demo-data repo once it is hosted); the host must allow
+// CORS. Unset or empty: /ai-demo/ on this site, as before.
+const DEMO_BASE = (import.meta.env.VITE_AI_DEMO_BASE || '/ai-demo/').replace(/\/?$/, '/')
 
 type Clip = { label: string; src: string; original?: boolean }
 type Segment = { start: number; end: number; text: string }
@@ -108,7 +113,7 @@ function showError(msg: string) {
 }
 
 async function loadPublished(id: string) {
-  const base = `/ai-demo/${encodeURIComponent(id)}/`
+  const base = `${DEMO_BASE}${encodeURIComponent(id)}/`
   try {
     const res = await fetch(base + 'demo.json')
     if (!res.ok) throw new Error(`Demoen "${id}" findes ikke.`)
@@ -197,7 +202,7 @@ function markChip(id: string | null) {
 async function listPublished() {
   let list: Listed[] = []
   try {
-    const res = await fetch('/ai-demo/index.json')
+    const res = await fetch(DEMO_BASE + 'index.json')
     if (res.ok) list = (await res.json()) as Listed[]
   } catch {
     /* no published demos */
