@@ -246,6 +246,19 @@ h1 {
 .service-card strong {
   color: var(--hm-accent-foreground);
 }
+.service-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.service-link span {
+  display: inline-block;
+  transition: transform var(--hm-duration-fast, 150ms) var(--hm-ease);
+}
+.service-link:hover span {
+  transform: translateX(4px);
+}
 .check-list {
   display: flex;
   flex-direction: column;
@@ -457,6 +470,49 @@ h1 {
   color: #94a3b8;
 }
 
+/* ── Testimonial ────────────────────────────────────────────────────── */
+.testimonial-inner {
+  max-width: 860px;
+  padding-bottom: 80px;
+}
+.testimonial-card {
+  margin: 0;
+  background: var(--hm-background);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: var(--hm-radius-xl);
+  padding: 40px 48px;
+}
+.testimonial-mark {
+  display: block;
+  height: 48px;
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--hm-brand-orange);
+}
+.testimonial-card blockquote {
+  margin: 0;
+}
+.testimonial-card blockquote p {
+  margin: 0 0 14px 0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--hm-foreground);
+  text-wrap: pretty;
+}
+.testimonial-card figcaption {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+}
+.testimonial-card figcaption span {
+  color: var(--hm-muted-foreground);
+}
+
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .nav-link,
@@ -485,6 +541,12 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .testimonial-card {
+    padding: 28px 22px;
+  }
+  .testimonial-card blockquote p {
+    font-size: 17px;
+  }
   .price-grid,
   .steps-grid,
   .services-grid {
