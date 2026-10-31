@@ -57,6 +57,7 @@ A.preload = 'auto'
 let demo: Demo | null = null
 const current = () => demo
 let objectURLs: string[] = []
+let leftURLs: string[] = []
 let noisy = false
 let cc = true
 let zoom = false
@@ -64,6 +65,15 @@ let z = 3
 let dragging = false
 
 // ── Loading ──────────────────────────────────────────────────────────────
+
+// Media only ever plays from this site or from blob: URLs this page made
+// itself from a folder the viewer opened.
+function mediaURL(u: string): string {
+  const parsed = new URL(u, location.href)
+  const ok = parsed.protocol === 'blob:' ? objectURLs.includes(u) : parsed.origin === location.origin && parsed.protocol === location.protocol
+  if (!ok) throw new Error(`Ugyldig medie-adresse: ${u}`)
+  return parsed.href
+}
 
 const safeRel = (rel: string) => {
   if (typeof rel !== 'string' || !/^[\w\-./]+$/.test(rel) || rel.startsWith('/') || rel.split('/').includes('..')) {
@@ -220,14 +230,15 @@ function show(d: Demo, url: Resolve) {
   stage.style.setProperty('--ar', `${d.width || 16}/${d.height || 9}`)
 
   // Videos: R (AI, cleaned sound) is the clock; L and the original sound follow it.
-  R.src = url(d.after.src)
+  R.src = mediaURL(url(d.after.src))
   $('tagR').textContent = d.after.label
   const sel = $<HTMLSelectElement>('leftSel')
-  sel.replaceChildren(...d.before.map((c) => new Option(c.label, url(c.src))))
+  leftURLs = d.before.map((c) => mediaURL(url(c.src)))
+  sel.replaceChildren(...d.before.map((c, i) => new Option(c.label, String(i))))
   sel.closest('label')!.hidden = d.before.length < 2
   setLeft()
   const original = d.before.find((c) => c.original)
-  A.src = original ? url(original.src) : ''
+  A.src = original ? mediaURL(url(original.src)) : ''
   $('audioLabel').hidden = $('audioGrp').hidden = !original
   noisy = false
   applyAudio()
@@ -239,7 +250,7 @@ function show(d: Demo, url: Resolve) {
       b.type = 'button'
       b.setAttribute('aria-label', `Gå til ${fmt(k.t)}`)
       const img = el('img')
-      img.src = url(k.src)
+      img.src = mediaURL(url(k.src))
       img.alt = ''
       img.loading = 'lazy'
       b.append(img, el('span', '', fmt(k.t)))
@@ -277,7 +288,7 @@ function setLeft() {
   const sel = $<HTMLSelectElement>('leftSel')
   const t = R.currentTime
   const playing = !R.paused
-  L.src = sel.value
+  L.src = leftURLs[sel.selectedIndex] ?? ''
   $('tagL').textContent = sel.selectedOptions[0]?.text.replace(/\s*\(.*\)$/, '') ?? ''
   L.addEventListener(
     'loadedmetadata',
