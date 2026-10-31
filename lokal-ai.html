@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lokal AI på gamle film — før og efter | fotos.happymates.dk</title>
+    <meta name="description" content="Se, hvad kunstig intelligens kan gøre for en gammel film: skarpere billede, renere lyd, tekst til det, der bliver sagt, og et resumé — regnet ud på én Mac uden internet." />
+    <link rel="icon" type="image/svg+xml" href="/assets/happy-mates-logo.svg" />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a href="/" class="nav-home">
+          <img src="/assets/happy-mates-logo.svg" alt="Happy Mates" class="nav-logo" />
+          <span class="hm-wordmark nav-wordmark">HAPPY MATES</span>
+        </a>
+        <span class="nav-domain">fotos.happymates.dk</span>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Forside</a>
+          <a href="/#kontakt" class="btn btn-primary btn-nav">Få et tilbud</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="aid">
+      <section class="container aid-hero">
+        <div class="hm-eyebrow">Lokal AI · Smalfilm · Video</div>
+        <h1>Gamle film, nyt liv — <span class="hm-gradient-text">uden at de forlader huset</span></h1>
+        <p class="hero-lead">Her kan du se, hvad kunstig intelligens kan gøre for en gammel film: skarpere billede, renere lyd, tekst til det, der bliver sagt, og et resumé af indholdet. Alt er regnet ud på én Mac uden internet.</p>
+      </section>
+
+      <section class="container aid-picker" aria-label="Vælg demo">
+        <span class="aid-label">Demo</span>
+        <div class="aid-chips" id="chips"></div>
+        <label class="aid-open">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" /></svg>
+          Åbn demo-mappe
+          <input type="file" id="folder" webkitdirectory multiple hidden />
+        </label>
+      </section>
+
+      <section class="container aid-empty" id="empty">
+        <div class="aid-drop" id="drop">
+          <p class="aid-drop-title">Træk en demo-mappe hertil</p>
+          <p>— eller vælg <strong>Åbn demo-mappe</strong>. Mappen har en <code>demo.json</code> og en <code>media</code>-mappe. Filerne bliver i din browser; intet bliver sendt nogen steder.</p>
+          <p class="aid-error" id="error" hidden></p>
+        </div>
+      </section>
+
+      <section class="container aid-demo" id="demo" hidden>
+        <div class="aid-main">
+          <div class="aid-player">
+            <div class="aid-stage" id="stage">
+              <video id="right" playsinline preload="auto"></video>
+              <div class="aid-left"><video id="left" playsinline preload="auto" muted></video></div>
+              <div class="aid-divider" aria-hidden="true"><span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5" /><path d="m16 7 5 5-5 5" /></svg>
+              </span></div>
+              <span class="aid-tag aid-tag-l" id="tagL"></span>
+              <span class="aid-tag aid-tag-r" id="tagR"></span>
+              <div class="aid-caption" id="caption"></div>
+            </div>
+            <div class="aid-controls">
+              <button type="button" class="aid-play" id="play" aria-label="Afspil">
+                <svg class="i-play" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z" /></svg>
+                <svg class="i-pause" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z" /></svg>
+              </button>
+              <input class="aid-seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="Tid" />
+              <span class="aid-time" id="time">0:00 / 0:00</span>
+            </div>
+            <div class="aid-controls aid-controls-2">
+              <label class="aid-label">Venstre <select id="leftSel"></select></label>
+              <span class="aid-label" id="audioLabel">Lyd</span>
+              <span class="aid-seg" id="audioGrp">
+                <button type="button" id="aOrig">Original</button>
+                <button type="button" id="aClean" class="on">Renset</button>
+              </span>
+              <button type="button" class="aid-toggle" id="zoomBtn" aria-pressed="false">Lup</button>
+              <button type="button" class="aid-toggle on" id="ccBtn" aria-pressed="true">Tekst</button>
+              <span class="aid-seg">
+                <button type="button" data-rate="0.25">¼×</button>
+                <button type="button" data-rate="1" class="on">1×</button>
+              </span>
+              <span class="aid-hint">Træk i billedet for at flytte skillelinjen</span>
+            </div>
+          </div>
+          <div class="aid-frames" id="frames"></div>
+        </div>
+
+        <aside class="aid-side">
+          <div class="aid-card aid-card-primary" id="summaryCard">
+            <h2>AI-resumé</h2>
+            <div class="aid-summary" id="summary"></div>
+          </div>
+          <div class="aid-card" id="metricsCard">
+            <h2>Målinger</h2>
+            <div class="aid-stats" id="stats"></div>
+            <p class="aid-small" id="metricsNote"></p>
+          </div>
+          <div class="aid-card" id="transcriptCard">
+            <h2>Transskription</h2>
+            <div class="aid-transcript" id="transcript"></div>
+          </div>
+          <p class="aid-small" id="meta"></p>
+        </aside>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-pad">
+          <h2 class="section-title">Sådan blev filmen behandlet</h2>
+          <p class="section-sub">Alle trin kører på samme Mac, uden internet — der er ingen sky involveret.</p>
+          <div class="steps-grid" id="pipeline"></div>
+          <div class="aid-note">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+            <span>Åbner du en demo-mappe, bliver filerne i din browser. Intet bliver sendt nogen steder.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container aid-cta">
+        <div>
+          <h2>Ligger der film i en kasse på loftet?</h2>
+          <p>Vi digitaliserer smalfilm og videobånd — og fortæller dig gerne, hvad AI kan gøre for netop dine.</p>
+        </div>
+        <a href="/#kontakt" class="btn btn-primary btn-lg">Få et uforpligtende tilbud</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <img src="/assets/happy-mates-logo.svg" alt="Happy Mates" class="footer-logo" />
+        <div class="footer-text">
+          <div>fotos.happymates.dk · <a href="https://happymates.dk">Foreningen Happy Mates</a> · CVR 46371771</div>
+          <div class="footer-address">Lysskovvej 2, 3060 Espergærde · <a href="tel:+4522803750">22 80 37 50</a> · <a href="mailto:fotos@happymates.dk">fotos@happymates.dk</a></div>
+          <nav class="footer-links" aria-label="Juridiske oplysninger">
+            <a href="/handelsbetingelser.html">Handelsbetingelser &amp; virksomhedsoplysninger</a>
+            <a href="/privatlivspolitik.html">Privatlivs- og cookiepolitik</a>
+            <button type="button" class="link-button" data-cookie-settings>Cookie-indstillinger</button>
+          </nav>
+        </div>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ai-demo.ts"></script>
+  </body>
+</html>

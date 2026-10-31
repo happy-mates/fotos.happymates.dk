@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         handelsbetingelser: resolve(__dirname, 'handelsbetingelser.html'),
         privatlivspolitik: resolve(__dirname, 'privatlivspolitik.html'),
+        lokalAi: resolve(__dirname, 'lokal-ai.html'),
       },
     },
   },
