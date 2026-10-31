@@ -27,5 +27,7 @@ skill `video-demo-handover` i `surdej-v2/bakesafe`).
 - **Vis uden at udgive:** "Åbn demo-mappe" (eller træk mappen ind på siden). Filerne bliver i browseren.
 - **Udgiv:** kopiér mappen til `public/ai-demo/<id>/` og tilføj `{"id": "<id>", "title": "<titel>"}` i
   `public/ai-demo/index.json`. `/lokal-ai.html?demo=<id>` åbner den direkte. Kun optagelser, vi har ret til at vise.
+  Demoerne kan ligge et andet sted (fx `happy-mates/ai-demo-data`, når det bliver hostet): sæt
+  repo-variablen `AI_DEMO_BASE` til adressen (med CORS); tom betyder `/ai-demo/` her på siden.
 
 Design-udkast ligger i [design/](design/).
