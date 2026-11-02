@@ -308,6 +308,11 @@ h1 {
   color: var(--hm-muted-foreground);
   margin-top: 12px;
 }
+.price-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
 .price-note {
   font-size: 13px;
   color: #94a3b8;

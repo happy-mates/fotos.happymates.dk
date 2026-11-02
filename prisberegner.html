@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prisberegner — hvad koster digitalisering? | fotos.happymates.dk</title>
+    <meta name="description" content="Regn selv prisen ud for digitalisering af dias, negativer, papirbilleder, album, aviser, video, lyd og smalfilm. Alle priser inkl. moms — ingen minimum og intet startgebyr." />
+    <link rel="icon" type="image/svg+xml" href="/assets/happy-mates-logo.svg" />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a href="/" class="nav-home">
+          <img src="/assets/happy-mates-logo.svg" alt="Happy Mates" class="nav-logo" />
+          <span class="hm-wordmark nav-wordmark">HAPPY MATES</span>
+        </a>
+        <span class="nav-domain">fotos.happymates.dk</span>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Forside</a>
+          <a href="#prisliste" class="nav-link">Prisliste</a>
+          <a href="/#kontakt" class="btn btn-primary btn-nav">Få et tilbud</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pb">
+      <section class="container pb-hero">
+        <div class="hm-eyebrow">Prisberegner</div>
+        <h1>Hvad koster det at <span class="hm-gradient-text">redde dine minder?</span></h1>
+        <p class="hero-lead">Vælg, hvad du har liggende, og se prisen med det samme. Vi scanner det hele for 2 kr. pr. billede. Du betaler 10 kr. for de billeder, du vil gemme i høj opløsning — og dem vælger du først, når du har set dem.</p>
+      </section>
+
+      <section class="container pb-tool" aria-label="Beregn din pris">
+        <div class="pb-panel">
+          <div class="pb-panel-head">
+            <h2>Hvad har du?</h2>
+            <button type="button" class="pb-btn pb-btn-ghost" id="pb-reset">Start forfra</button>
+          </div>
+          <div class="pb-adders" id="pb-adders" aria-label="Tilføj"></div>
+          <div class="pb-lines" id="pb-lines"></div>
+        </div>
+
+        <aside class="pb-side">
+          <div class="pb-summary">
+            <div class="pb-total-label">Din pris inkl. moms</div>
+            <div class="pb-total" id="pb-total">0 kr.</div>
+            <div class="pb-moms" id="pb-moms">heraf moms 0 kr.</div>
+            <ul class="pb-facts">
+              <li>Ingen minimum og intet startgebyr</li>
+              <li>Levering på ca. 14 dage</li>
+              <li>Afhentning i Helsingør og omegn</li>
+            </ul>
+            <label class="pb-field" for="pb-navn">Navn på beregningen
+              <input type="text" id="pb-navn" placeholder="Fx Mormors dias" autocomplete="off" />
+            </label>
+            <div class="pb-actions">
+              <a class="btn btn-primary pb-send" id="pb-send" href="mailto:fotos@happymates.dk">Send til os</a>
+              <button type="button" class="pb-btn" id="pb-gem">Gem</button>
+              <button type="button" class="pb-btn" id="pb-kopier">Kopiér</button>
+            </div>
+            <p class="pb-small">“Send til os” åbner en mail til fotos@happymates.dk med din beregning. Du kan også ringe på 22 80 37 50.</p>
+          </div>
+
+          <div class="pb-saved">
+            <div class="pb-saved-head">
+              <h2>Mine beregninger</h2>
+              <span class="pb-small" id="pb-saved-count"></span>
+            </div>
+            <div class="pb-saved-bar" id="pb-saved-bar" hidden>
+              <label class="pb-check" for="pb-alle"><input type="checkbox" id="pb-alle" /> Vælg alle</label>
+              <button type="button" class="pb-btn pb-btn-danger" id="pb-slet-valgte" disabled>Slet valgte</button>
+            </div>
+            <div class="pb-confirm" id="pb-confirm" hidden>
+              <span id="pb-confirm-tekst"></span>
+              <div class="pb-confirm-actions">
+                <button type="button" class="pb-btn pb-btn-danger-solid" id="pb-confirm-ja">Slet</button>
+                <button type="button" class="pb-btn" id="pb-confirm-nej">Annuller</button>
+              </div>
+            </div>
+            <div id="pb-saved-list"></div>
+            <p class="pb-small">Gemmes kun i denne browser, når du trykker “Gem”. Vi kan ikke se dem.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="prisliste" class="section section-pad">
+        <div class="container">
+          <h2 class="section-title">Prisliste</h2>
+          <p class="section-sub">Alle priser er inkl. moms. Ingen minimum og intet startgebyr.</p>
+          <div class="pb-price-grid" id="pb-price-grid"></div>
+          <p class="price-note">Kørsel ved afhentning eller besøg: 5 kr. pr. kørt km. USB-nøgle eller harddisk efter aftale. Se også <a href="/handelsbetingelser.html">handelsbetingelser og fortrydelsesret</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <img src="/assets/happy-mates-logo.svg" alt="Happy Mates" class="footer-logo" />
+        <div class="footer-text">
+          <div>fotos.happymates.dk · <a href="https://happymates.dk">Foreningen Happy Mates</a> · CVR 46371771</div>
+          <div class="footer-address">Lysskovvej 2, 3060 Espergærde · <a href="tel:+4522803750">22 80 37 50</a> · <a href="mailto:fotos@happymates.dk">fotos@happymates.dk</a></div>
+          <nav class="footer-links" aria-label="Juridiske oplysninger">
+            <a href="/handelsbetingelser.html">Handelsbetingelser &amp; virksomhedsoplysninger</a>
+            <a href="/privatlivspolitik.html">Privatlivs- og cookiepolitik</a>
+            <button type="button" class="link-button" data-cookie-settings>Cookie-indstillinger</button>
+          </nav>
+        </div>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/prisberegner.ts"></script>
+  </body>
+</html>
